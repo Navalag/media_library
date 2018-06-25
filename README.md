@@ -7,11 +7,11 @@ This example can be easily used to create a website that lets you organize and d
 
 ## Used technologies:
 
-* :point_right: Databases
-* :point_right: Error Handling
-* :point_right: Pagination
-* :point_right: Search
-* :point_right: Email and Form Data
+:point_right: Databases
+:point_right: Error Handling
+:point_right: Pagination
+:point_right: Search
+:point_right: Email and Form Data
 
 ## Source - [Treehouse](https://teamtreehouse.com/home)
 
