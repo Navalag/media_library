@@ -4,23 +4,23 @@ function get_catalog_count($category = null,$search = null) {
 		include("connection.php");
 
 		try {
-				$sql = "SELECT COUNT(media_id) FROM Media";
-				if (!empty($search)) {
-					$result = $db->prepare(
-						$sql
-						. " WHERE title LIKE ?"
-					);
-					$result->bindValue(1,'%'.$search.'%',PDO::PARAM_STR);
-				} else if (!empty($category)) {
-					$result = $db->prepare(
-						$sql
-						. " WHERE LOWER(category) = ?"
-					);
-					$result->bindParam(1,$category,PDO::PARAM_STR);
-				} else {
-					$result = $db->prepare($sql);
-				}
-				$result->execute();
+			$sql = "SELECT COUNT(media_id) FROM Media";
+			if (!empty($search)) {
+				$result = $db->prepare(
+					$sql
+					. " WHERE title LIKE ?"
+				);
+				$result->bindValue(1,'%'.$search.'%',PDO::PARAM_STR);
+			} else if (!empty($category)) {
+				$result = $db->prepare(
+					$sql
+					. " WHERE LOWER(category) = ?"
+				);
+				$result->bindParam(1,$category,PDO::PARAM_STR);
+			} else {
+				$result = $db->prepare($sql);
+			}
+			$result->execute();
 		} catch (Exception $e) {
 			echo "bad query";
 		}
@@ -34,8 +34,8 @@ function full_catalog_array($limit = null, $offset = 0) {
 
 		try {
 			$sql = "SELECT media_id, title, category,img 
-				 FROM Media
-				 ORDER BY 
+				FROM Media
+				ORDER BY 
 					 REPLACE(
 						 REPLACE(
 								REPLACE(title,'The ',''),
@@ -45,13 +45,13 @@ function full_catalog_array($limit = null, $offset = 0) {
 						 'A ',
 						 ''
 					 )";
-			 if (is_integer($limit)) {
+			if (is_integer($limit)) {
 					$results = $db->prepare($sql . " LIMIT ? OFFSET ?");
 					$results->bindParam(1,$limit,PDO::PARAM_INT);
 					$results->bindParam(2,$offset,PDO::PARAM_INT);
-			 } else {
+			} else {
 					$results = $db->prepare($sql);
-			 }
+			}
 			 $results->execute();
 		} catch (Exception $e) {
 			 echo "Unable to retrieved results";
@@ -78,16 +78,16 @@ function category_catalog_array($category, $limit = null, $offset = 0) {
 					 'A ',
 					 ''
 				 )";
-			 if (is_integer($limit)) {
+			if (is_integer($limit)) {
 					$results = $db->prepare($sql . " LIMIT ? OFFSET ?");
-				 $results->bindParam(1,$category,PDO::PARAM_STR);
+				$results->bindParam(1,$category,PDO::PARAM_STR);
 					$results->bindParam(2,$limit,PDO::PARAM_INT);
 					$results->bindParam(3,$offset,PDO::PARAM_INT);
-			 } else {
+			} else {
 				 $results = $db->prepare($sql);
 				 $results->bindParam(1,$category,PDO::PARAM_STR);
-			 }
-			 $results->execute();
+			}
+			$results->execute();
 		} catch (Exception $e) {
 			 echo "Unable to retrieved results";
 			 exit;
