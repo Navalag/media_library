@@ -16,6 +16,6 @@ This example can be easily used to create a website that lets you organize and d
 
 ## Source - [Treehouse](https://teamtreehouse.com/home)
 
-You can find my full Treehouse workflow [here](https://github.com/Navalag/Treehouse-Workflow). Also there is firs version of [Media Library app](https://github.com/Navalag/Treehouse-Workflow/tree/master/PHP/PHP_website) just with less code, without databases but wit multidimensional array.
+You can find my full Treehouse workflow [here](https://github.com/Navalag/Treehouse-Workflow). Also there is first version of [Media Library app](https://github.com/Navalag/Treehouse-Workflow/tree/master/PHP/PHP_website) just with less code, without databases but with multidimensional array.
 
 #### Enjoy :heart_eyes_cat:
