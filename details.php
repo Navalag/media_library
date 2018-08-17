@@ -1,4 +1,5 @@
 <?php 
+
 include("inc/functions.php");
 
 if (isset($_GET["id"])) {

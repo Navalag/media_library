@@ -1,4 +1,5 @@
 <?php 
+
 include("inc/functions.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$name = trim(filter_input(INPUT_POST,"name",FILTER_SANITIZE_STRING));

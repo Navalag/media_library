@@ -1,7 +1,9 @@
 <?php
+
 function get_catalog_count($category = null,$search = null) {
 	$category = strtolower($category);
-	include("connection.php");
+
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 
 	try {
 		$sql = "SELECT COUNT(media_id) FROM Media";
@@ -26,11 +28,12 @@ function get_catalog_count($category = null,$search = null) {
 	}
 	
 	$count = $result->fetchColumn(0);
+	$db = null;
 	return $count;
 }
 
 function full_catalog_array($limit = null, $offset = 0) {
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 
 	try {
 		$sql = "SELECT media_id, title, category,img 
@@ -59,10 +62,12 @@ function full_catalog_array($limit = null, $offset = 0) {
 	}
 	
 	$catalog = $results->fetchAll();
+	$db = null;
 	return $catalog;
 }
+
 function category_catalog_array($category, $limit = null, $offset = 0) {
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 	$category = strtolower($category);
 	try {
 		 $sql = "SELECT media_id, title, category,img 
@@ -94,10 +99,12 @@ function category_catalog_array($category, $limit = null, $offset = 0) {
 	}
 	
 	$catalog = $results->fetchAll();
+	$db = null;
 	return $catalog;
 }
+
 function search_catalog_array($search, $limit = null, $offset = 0) {
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 	
 	try {
 		 $sql = "SELECT media_id, title, category,img 
@@ -129,28 +136,32 @@ function search_catalog_array($search, $limit = null, $offset = 0) {
 	}
 	
 	$catalog = $results->fetchAll();
+	$db = null;
 	return $catalog;
 }
+
 function random_catalog_array() {
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 
 	try {
-		 $results = $db->query(
-			 "SELECT media_id, title, category,img 
-			 FROM Media
-			 ORDER BY RANDOM()
-			 LIMIT 4"
-		 );
+		$results = $db->query(
+			"SELECT media_id, title, category, img 
+			FROM Media
+			-- ORDER BY RANDOM()
+			LIMIT 4"
+		);
 	} catch (Exception $e) {
-		 echo "Unable to retrieved results";
-		 exit;
+		echo "Unable to retrieved results";
+		exit;
 	}
 	
 	$catalog = $results->fetchAll();
+	$db = null;
 	return $catalog;
 }
+
 function single_item_array($id) {
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 
 	try {
 		$results = $db->prepare(
@@ -186,12 +197,14 @@ function single_item_array($id) {
 	while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			$item[$row["role"]][] = $row["fullname"];
 	}
+
+	$db = null;
 	return $item;
 }
 
 function genre_array($category = null) {
 	$category = strtolower($category);
-	include("connection.php");
+	include($_SERVER["DOCUMENT_ROOT"]."/config/connect.php");
 	
 	try {
 		$sql = "SELECT genre, category"
@@ -210,10 +223,13 @@ function genre_array($category = null) {
 	} catch (Exception $e) {
 		echo "bad query";
 	}
+
 	$genres = array();
 	while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
 			$genres[$row["category"]][] = $row["genre"];
 	}
+
+	$db = null;
 	return $genres;
 }
 
