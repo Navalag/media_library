@@ -1,6 +1,5 @@
 <?php 
 
-include($_SERVER["DOCUMENT_ROOT"]."/config/setup.php");
 include("inc/functions.php");
 
 $pageTitle = "Personal Media Library";

@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$email_body .= "Details " . $details . "\n";
 		
 		$mail->setFrom($email, $name);
-		$mail->addAddress('treehouse@localhost', 'Alena');     // Add a recipient
+		$mail->addAddress('andrii.galavan@gmail.com', 'Andrew');     // Add a recipient
 		
 		$mail->isHTML(false);                                  // Set email format to HTML
 		

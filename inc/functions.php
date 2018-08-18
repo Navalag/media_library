@@ -147,7 +147,7 @@ function random_catalog_array() {
 		$results = $db->query(
 			"SELECT media_id, title, category, img 
 			FROM Media
-			-- ORDER BY RANDOM()
+			ORDER BY RAND()
 			LIMIT 4"
 		);
 	} catch (Exception $e) {
