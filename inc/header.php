@@ -22,12 +22,12 @@
 
 	</div>
 	
-	<!-- <div class="search">
-		<form method="get" action="catalog.php">
+	<div class="clearfix">
+		<form class="search-form" method="get" action="catalog.php">
 			<label for="s">Search:</label>
 			<input type="text" name="s" id="s" />
-			<input type="submit" value="go" />  
+			<input class="search-button" type="submit" value="go" />
 		</form>
-	</div> -->
+	</div>
 
 	<div id="content">

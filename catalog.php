@@ -33,12 +33,14 @@ if (empty($current_page)) {
 $total_items = get_catalog_count($section,$search);
 $total_pages = 1;
 $offset = 0;
-if ($total_items >0 ) {
+if ($total_items > 0) {
 	$total_pages = ceil($total_items / $items_per_page);
 
 	//limit results in redirect
 	$limit_results = "";
-	if (!empty($section)) {
+	if (!empty($search)) {
+		$limit_results = "s=".urlencode(htmlspecialchars($search))."&";
+	} else if (!empty($section)) {
 		$limit_results = "cat=" . $section . "&";
 	}
 	
@@ -66,7 +68,9 @@ if ($total_items >0 ) {
 			$pagination .= " <span>$i</span>";
 		} else {
 			$pagination .= " <a href='catalog.php?";
-			if (!empty($section)) {
+			if (!empty($search)) {
+				$pagination .= "s=".urlencode(htmlspecialchars($search))."&";
+			} else if (!empty($section)) {
 				$pagination .= "cat=".$section."&";
 			}
 			$pagination .= "pg=$i'>$i</a>";
@@ -99,7 +103,7 @@ include("inc/header.php"); ?>
 			echo $pageTitle;
 		}
 		?></h1>
-		<?php
+		<?php 
 		if ($total_items < 1) {
 			echo "<p>No items were found matching that search term.</p>";
 			echo "<p>Search Again or "

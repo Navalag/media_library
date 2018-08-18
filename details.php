@@ -21,7 +21,7 @@ include("inc/header.php"); ?>
 
 	<div class="wrapper">
 		
-		<div class="breadcrumbs">
+		<div class="breadcrumb">
 			<a href="catalog.php">Full Catalog</a>
 			&gt; <a href="catalog.php?cat=<?php echo strtolower($item["category"]); ?>">
 			<?php echo $item["category"]; ?></a>
@@ -96,3 +96,5 @@ include("inc/header.php"); ?>
 	</div>
 
 </div>
+
+<?php include("inc/footer.php"); ?>
