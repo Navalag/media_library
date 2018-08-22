@@ -4,7 +4,7 @@ This project shows how to build a simple website using the PHP programming langu
 
 The web application, a Personal Media Library, can help to organize and display Books, Movies and Music.
 
-This example can be easily used to create a website that lets you organize and display any type of item: Products, Services, Events, etc.
+This example can be easily used to create a website that lets you organize and display any type of items: Products, Services, Events, etc.
 
 <img src="screenshots/screen_1.png" alt="project screenshot 1" title="project screenshot 1" width="700">
 
