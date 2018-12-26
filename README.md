@@ -54,7 +54,7 @@ Then go to the project folder:
 cd media_library
 ```
 
-And in file config/database.php write you database username and password.
+And in file src/config/database.php write you database username and password.
 
 **Thats it!** :ok_hand: you can now restart a server and open project in browser.
 
